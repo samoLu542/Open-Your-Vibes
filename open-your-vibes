@@ -1,0 +1,71 @@
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import Chat from "./pages/Chat";
+import Profile from "./pages/Profile";
+import Ads from "./pages/Ads";
+import Terms from "./pages/Terms";
+import Payment from "./pages/Payment";
+import Matchmaking from "./pages/Matchmaking";
+import ParentForum from "./pages/ParentForum";
+import GeneralForum from "./pages/GeneralForum";
+import Stories from "./pages/Stories";
+import Marketplace from "./pages/Marketplace";
+import Affiliate from "./pages/Affiliate";
+import NannyAds from "./pages/NannyAds";
+import Blog from "./pages/Blog";
+import Reviews from "./pages/Reviews";
+import NightCorner from "./pages/NightCorner";
+import AdminAnalytics from "./pages/AdminAnalytics";
+import LiveStreams from "./pages/LiveStreams";
+import BoostProfile from "./pages/BoostProfile";
+import ExclusiveEvents from "./pages/ExclusiveEvents";
+import AnonymousMode from "./pages/AnonymousMode";
+import VideoStories from "./pages/VideoStories";
+import AdsSpace from "./pages/AdsSpace";
+import AboutUs from "./pages/AboutUs";
+import { AuthProvider } from "./context/AuthContext";
+import { GoogleTranslate } from "./components/GoogleTranslate";
+
+function App() {
+  return (
+    <AuthProvider>
+      <Router>
+        <GoogleTranslate />
+        <Routes>
+          <Route path="/" element={<Home bannerImages={["happy_couple.jpg", "friendship_group.jpg", "swinger_fun.jpg"]} textOverlay="Pridruži se zajednici gdje partnerstvo i avantura stvaraju novu obitelj!" />} />
+          <Route path="/register" element={<Register restriction={{ male: 14.99, female: 0, couple: 0 }} ageLimit={{ min: 18, max: 40 }} verification={{ selfie: true, idCard: true }} privacy={{ displayNameOnly: true }} authMethods={{ email: true, google: true }} />} />
+          <Route path="/login" element={<Login authMethods={{ email: true, google: true }} />} />
+          <Route path="/chat" element={<Chat languageAdaptation={true} videoCalls={true} />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/ads" element={<Ads subscription={{ swingerClub: 5 }} />} />
+          <Route path="/terms" element={<Terms legal={{ ageRestriction: 18, dataProtection: true, adminApproval: true, liabilityDisclaimer: true }} />} />
+          <Route path="/payment" element={<Payment methods={{ bitcoin: true, paypal: true }} />} />
+          <Route path="/matchmaking" element={<Matchmaking service={{ price: 30, description: "Spajamo najkompatibilnije parove i organizujemo iznenađenje party sa našim partnerima." }} />} />
+          <Route path="/parent-forum" element={<ParentForum ads={{ nannyServices: true }} />} />
+          <Route path="/general-forum" element={<GeneralForum />} />
+          <Route path="/stories" element={<Stories topics={["Odlazak u swing klub sa partnerom", "Mlada i živahna u trojcu sa dva muškarca", "Grupni seks iskustva"]} />} />
+          <Route path="/marketplace" element={<Marketplace subscription={{ listing: 2.99 }} />} />
+          <Route path="/affiliate" element={<Affiliate rewards={{ perSignup: 0.18, minWithdrawal: 10, paymentMethods: ["paypal", "moonpay"] }} />} />
+          <Route path="/nanny-ads" element={<NannyAds />} />
+          <Route path="/reviews" element={<Reviews categories={["nanny", "spaces", "profiles"]} />} />
+          <Route path="/blog" element={<Blog topics={["relationships", "parenting", "lifestyle"]} />} />
+          <Route path="/night-corner" element={<NightCorner premium={{ weekly: 2, monthly: 5 }} tokenSystem={{ name: "YV", conversionRate: { 100: 2 }, gifts: { kissPink: 10, kissBlue: 10, coinYV: 50, heartYV: 80, grapeYV: 1000 }, minPayoutTokens: 2000, payoutValue: 10 }} />} />
+          <Route path="/admin-analytics" element={<AdminAnalytics />} />
+          <Route path="/live-streams" element={<LiveStreams />} />
+          <Route path="/boost-profile" element={<BoostProfile />} />
+          <Route path="/exclusive-events" element={<ExclusiveEvents />} />
+          <Route path="/anonymous-mode" element={<AnonymousMode />} />
+          <Route path="/video-stories" element={<VideoStories />} />
+          <Route path="/ads-space" element={<AdsSpace />} />
+          <Route path="/about-us" element={<AboutUs description="Open Your Vibes je moderna platforma za swing parove i pojedince koji žele istraživati nove avanture u sigurnom okruženju. Stvorili smo mesto gde se ljudi mogu povezati, zabaviti i čak zaraditi kroz interakciju s drugima. Uz ekskluzivne događaje, anonimnost i premium opcije, pružamo vrhunsko iskustvo za sve koji žele probati nešto novo." />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
+  );
+}
+
+export default App;
+
